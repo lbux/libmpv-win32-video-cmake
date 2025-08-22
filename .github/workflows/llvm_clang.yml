@@ -215,7 +215,6 @@ jobs:
           {
             "ref": "master",
             "inputs": {
-              "sourceforge": "false",
               "github_release": "false",
               "mpv_tarball": "false"
             }
