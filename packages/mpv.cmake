@@ -15,6 +15,10 @@ ExternalProject_Add(mpv
         shaderc
         libplacebo
         spirv-cross
+        libdvdcss
+        libdvdread
+        libdvdnav
+        libbluray
     GIT_REPOSITORY https://github.com/mpv-player/mpv.git
     SOURCE_DIR ${SOURCE_LOCATION}
     UPDATE_COMMAND ""
@@ -24,7 +28,7 @@ ExternalProject_Add(mpv
         --cross-file=${MESON_CROSS}
         --default-library=shared
         --prefer-static
-        -Dgpl=false
+        -Dgpl=true
         -Ddebug=false
         -Db_ndebug=false
         -Doptimization=3
@@ -41,6 +45,10 @@ ExternalProject_Add(mpv
         -Dvulkan=enabled
         -Dvapoursynth=disabled
         ${mpv_gl}
+        -Ddvdread=enabled
+        -Ddvdnav=enabled
+        -Dlibbluray=enabled
+        -Dlibass=enabled
         -Dc_args='-Wno-error=int-conversion'
     BUILD_COMMAND ${EXEC} LTO_JOB=1 PDB=1 ninja -C <BINARY_DIR>
     INSTALL_COMMAND ""
@@ -49,8 +57,7 @@ ExternalProject_Add(mpv
 
 ExternalProject_Add_Step(mpv strip-binary
     DEPENDEES build
-    ${mpv_add_debuglink}
-    COMMENT "Stripping mpv binaries"
+    COMMENT "Disabled stripping for now"
 )
 
 ExternalProject_Add_Step(mpv copy-binary
