@@ -207,7 +207,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_llvm
     env:
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.PAT_FOR_WORKFLOW_DISPATCH }}
     steps:
       - name: Run mpv_clang.yml
         run: |
