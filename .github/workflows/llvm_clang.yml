@@ -215,8 +215,8 @@ jobs:
           {
             "ref": "master",
             "inputs": {
-              "github_release": "false",
-              "mpv_tarball": "false"
+              "github_release": "true",
+              "mpv_tarball": "true"
             }
           }
           EOF
